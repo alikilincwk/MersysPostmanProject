@@ -29,6 +29,10 @@
 - **US109**: Defining and editing grading schemes through API.
 - **US110**: Managing incidents such as accidents in schools via API.
 
+## User Stories Details
+For more information on user stories, refer to the detailed document:  [APITesting_UserStories_-_USER_STORIES.pdf](https://github.com/user-attachments/files/18221478/APITesting_UserStories_-_USER_STORIES.pdf)
+
+
 ## Contributing
 - *alikilincwk*
 - *AlizaminMammadli*
