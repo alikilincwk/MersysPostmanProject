@@ -9,8 +9,10 @@
 - **IntelliJ IDEA**: Used as a platform for managing the JSON files associated with the project.
 
 ## Usage
-- The JSON file in this repository contains a `"_collection_link"` field.
-- Users can copy the link from the JSON file and use it to import the collection directly into Postman.
+- Download the JSON file from this repository.
+- Open Postman and click the Import button in the toolbar.
+- In the Import window, drag and drop the downloaded JSON file into the designated area.
+- The collection will be imported and available for use in your Postman workspace.
 
 ## Postman Compatibility
 - This project was created using **Postman v11.23.3**. It is recommended to use the same version or a compatible version to ensure proper functionality.
