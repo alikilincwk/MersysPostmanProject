@@ -1,0 +1,2757 @@
+{
+	"info": {
+		"_postman_id": "5bd7663a-dd90-4c85-b7ac-908f87932591",
+		"name": "User Stories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39551771",
+		"_collection_link": "https://team02-6611.postman.co/workspace/Mersys-Project~aa0c6198-322a-41c8-90d3-b461b27b6951/collection/39551771-5bd7663a-dd90-4c85-b7ac-908f87932591?action=share&source=collection_link&creator=39551771"
+	},
+	"item": [
+		{
+			"name": "US001",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"authToken\", jsonData.token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "c7573fd7960216524156e97d0e29a853113c8261a0e78844d5c77bbb96293d50",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"username\": \"turkeyts\",\r\n  \"password\": \"TechnoStudy123\",\r\n  \"rememberMe\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/auth/login",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Invalid username or password\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"invalid_user\",\r\n    \"password\": \"WrongPassword123\",\r\n    \"rememberMe\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/auth/login",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US002",
+			"item": [
+				{
+					"name": "List countries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/countries",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"{{$randomCountry}}{{$randomAlphaNumeric}}\",\r\n  \"code\": \"{{$randomCountryCode}}\",\r\n  \"translateName\": null,\r\n  \"hasState\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/countries",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US101",
+			"item": [
+				{
+					"name": "State List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains states list with name and optional code\", function () {\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.be.an(\"array\");\r",
+									"    jsonResponse.forEach(state => {\r",
+									"        pm.expect(state).to.have.property(\"name\");\r",
+									"        if (state.hasOwnProperty(\"code\")) {\r",
+									"            pm.expect(state).to.have.property(\"code\");\r",
+									"        } else {\r",
+									"            console.warn(`State '${state.name}' does not have a 'code' property.`);\r",
+									"        }\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/states",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"states"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create State",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Rastgele State Name ve ShortName oluştur\r",
+									"const randomStateName = \"State_\" + Math.random().toString(36).substring(7);\r",
+									"const randomShortName = \"SN_\" + Math.floor(Math.random() * 1000);\r",
+									"\r",
+									"// Environment değişkenlerine kaydet\r",
+									"pm.environment.set(\"random_state_name\", randomStateName);\r",
+									"pm.environment.set(\"random_short_name\", randomShortName);\r",
+									"pm.environment.set(\"country_id\", \"632cfcea0d5736269c5aa7c1\"); // Örnek country ID"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains created state details\", function () {\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"    pm.expect(jsonResponse).to.have.property(\"name\", pm.environment.get(\"random_state_name\"));\r",
+									"    pm.expect(jsonResponse).to.have.property(\"shortName\", pm.environment.get(\"random_short_name\"));\r",
+									"    pm.expect(jsonResponse.country).to.have.property(\"id\", pm.environment.get(\"country_id\"));\r",
+									"});\r",
+									"\r",
+									"// Oluşturulan state ID'sini kaydet\r",
+									"const jsonResponse = pm.response.json();\r",
+									"pm.environment.set(\"state_id\", jsonResponse.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{random_state_name}}\",\r\n    \"shortName\": \"{{random_short_name}}\",\r\n    \"country\": {\r\n        \"id\": \"{{country_id}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/states",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"states"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update State",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const randomStateName = \"UpdatedState_\" + Math.floor(Math.random() * 1000);\r",
+									"const randomShortName = \"USN_\" + Math.floor(Math.random() * 100);\r",
+									"\r",
+									"pm.variables.set(\"random_state_name\", randomStateName);\r",
+									"pm.variables.set(\"random_short_name\", randomShortName);\r",
+									"\r",
+									"pm.variables.set(\"country_id\", \"632cfcea0d5736269c5aa7c1\");\r",
+									"\r",
+									"console.log(\"Random State Name: \", randomStateName);\r",
+									"console.log(\"Random Short Name: \", randomShortName);\r",
+									"console.log(\"Country ID: \", pm.variables.get(\"country_id\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"State is successfully updated with random values\", function () {\r",
+									"    const jsonResponse = pm.response.json();\r",
+									"\r",
+									"    pm.expect(pm.response.code).to.eql(200); // HTTP Status Code kontrolü\r",
+									"    pm.expect(jsonResponse).to.have.property(\"id\");\r",
+									"    pm.expect(jsonResponse).to.have.property(\"name\", pm.variables.get(\"random_state_name\"));\r",
+									"    pm.expect(jsonResponse).to.have.property(\"shortName\", pm.variables.get(\"random_short_name\"));\r",
+									"\r",
+									"    console.log(\"Updated State Response:\", jsonResponse.country.id);\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"id\":\"{{state_id}}\",\r\n    \"name\": \"{{random_state_name}}\",\r\n    \"shortName\": \"{{random_short_name}}\",\r\n    \"country\": {\r\n        \"id\": \"{{country_id}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/states",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"states"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove State",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 204\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/states/{{state_id}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"states",
+								"{{state_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US102",
+			"item": [
+				{
+					"name": "Country List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();\r",
+									"\r",
+									"if (jsonResponse.length > 0) {\r",
+									"    const countryId = jsonResponse[0].id; // İlk ülke ID'sini al\r",
+									"    pm.variables.set(\"valid_country_id\", countryId);\r",
+									"    console.log(\"valid_country_id:\", countryId);\r",
+									"} else {\r",
+									"    console.warn(\"Ülke listesi boş döndü. Geçerli bir ülke bulunamadı.\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"// Country List,  Create, Update ve Delete City yapabilmek icin alindi.Cunku bu adimlari calistirabilmek icin country_id e ihtiyac var.\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/countries",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains city list with correct fields\", function () {\r",
+									"    const jsonResponse = pm.response.json(); // Yanıtı JSON formatında al\r",
+									"\r",
+									"    pm.expect(jsonResponse).to.be.an(\"array\"); // Yanıtın bir array olduğunu doğrula\r",
+									"\r",
+									"    jsonResponse.forEach(city => {\r",
+									"        pm.expect(city).to.have.property(\"name\"); // Şehir adı kontrolü\r",
+									"        pm.expect(city).to.have.property(\"id\"); // Şehir ID'si kontrolü\r",
+									"\r",
+									"        if (city.hasOwnProperty(\"country\")) { // Eğer 'country' varsa kontrol et\r",
+									"            pm.expect(city).to.have.property(\"country\"); // Ülke kontrolü\r",
+									"            pm.expect(city.country).to.have.property(\"name\"); // Ülke ismi kontrolü\r",
+									"        } else {\r",
+									"            console.warn(`City '${city.name}' does not have a 'country' property.`);\r",
+									"        }\r",
+									"\r",
+									"        if (city.hasOwnProperty(\"code\")) { // Eğer 'code' varsa\r",
+									"            pm.expect(city.code).to.be.a(\"string\"); // Kod string olmalı\r",
+									"        } else {\r",
+									"            console.warn(`City '${city.name}' does not have a 'code' property.`);\r",
+									"        }\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/cities",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a City",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Rastgele harf ve rakamlardan oluşan bir şehir ismi oluştur\r",
+									"// Rastgele şehir adı oluştur (8 karakter, harf ve rakamlar)\r",
+									"const generateRandomName = (length) => {\r",
+									"    let result = '';\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"};\r",
+									"\r",
+									"// Rastgele şehir ismi oluştur\r",
+									"const randomCityName = generateRandomName(8);\r",
+									"pm.variables.set(\"random_city_name\", randomCityName);\r",
+									"pm.variables.set(\"valid_country_id\", \"673f711277a27b779aafb1cc\"); // Country ID'yi set et\r",
+									"\r",
+									"console.log(\"Random City Name:\", randomCityName);\r",
+									"console.log(\"Country ID:\", pm.variables.get(\"valid_country_id\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonResponse = pm.response.json();\r",
+									"\r",
+									"// city_id değerini kontrol et ve set et\r",
+									"if (jsonResponse.id) {\r",
+									"    pm.environment.set(\"city_id\", jsonResponse.id);\r",
+									"    console.log(\"City ID set successfully:\", jsonResponse.id);\r",
+									"} else {\r",
+									"    console.error(\"City ID is missing in the response.\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{random_city_name}}\",\r\n    \"country\": {\r\n        \"id\": \"{{valid_country_id}}\",\r\n        \"hasState\": false\r\n    },\r\n    \"translateName\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/cities",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update City",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Rastgele harf ve rakamlardan oluşan bir şehir ismi oluştur\r",
+									"const generateRandomName = (length) => {\r",
+									"    let result = '';\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"};\r",
+									"\r",
+									"// Random şehir adı oluştur\r",
+									"const randomCityName = generateRandomName(8);\r",
+									"pm.variables.set(\"random_city_name\", randomCityName);\r",
+									"console.log(\"Random City Name:\", randomCityName);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonResponse = pm.response.json();\r",
+									"\r",
+									"pm.test(\"City updated successfully\", function () {\r",
+									"    pm.expect(jsonResponse).to.have.property(\"id\", pm.environment.get(\"city_id\"));\r",
+									"\r",
+									"    console.log(\"Updated City ID:\", jsonResponse.id);\r",
+									"    console.log(\"Updated City Name:\", jsonResponse.name);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{city_id}}\",\r\n    \"name\": \"{{random_city_name}}\",\r\n    \"country\": {\r\n        \"id\": \"673f711277a27b779aafb1cc\",\r\n        \"hasState\": false\r\n    },\r\n    \"translateName\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/cities",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove City",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200); // Silme işlemi başarılı olmalı\r",
+									"});\r",
+									"\r",
+									"console.log(\"Deleted City ID:\", pm.environment.get(\"city_id\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/cities/{{city_id}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"cities",
+								"{{city_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US103",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"turkeyts\",\r\n  \"password\": \"TechnoStudy123\",\r\n  \"rememberMe\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/auth/login",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD Registration",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"lessonID\", pm.response.json().id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"{{$randomLastName}}\",\r\n  \"type\": \"REGISTRATION\",\r\n  \"translateName\": [],\r\n  \"school\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"gradeLevel\": {\r\n    \"id\": \"65489909e70d9e34a8331e53\"\r\n  },\r\n  \"academicPeriod\": \"6577022e8af7ce488ac69b96\",\r\n  \"active\": true,\r\n  \"description\": \"\",\r\n  \"note\": \"\",\r\n  \"agreementText\": \"\",\r\n  \"sendSMS\": false,\r\n  \"sms\": \"\",\r\n  \"sendEmailEnabled\": false,\r\n  \"emailMessage\": {\r\n    \"subject\": \"\",\r\n    \"content\": \"\"\r\n  },\r\n  \"registrationStartDate\": \"2024-12-17T00:00:00.000Z\",\r\n  \"registrationEndDate\": \"2024-12-26T00:00:00.000Z\",\r\n  \"paid\": false,\r\n  \"price\": 0,\r\n  \"bankAccount\": null,\r\n  \"sendEmailToRegistrar\": false,\r\n  \"registrarEmails\": [],\r\n  \"showDescFirst\": false,\r\n  \"showNoteFirst\": false,\r\n  \"noteEnabled\": false,\r\n  \"descEnabled\": false,\r\n  \"agreementEnabled\": false,\r\n  \"formTemplateId\": null,\r\n  \"documents\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD Registration Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"\",\r\n  \"type\": \"REGISTRATION\",\r\n  \"translateName\": [],\r\n  \"school\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"gradeLevel\": {\r\n    \"id\": \"65489909e70d9e34a8331e53\"\r\n  },\r\n  \"academicPeriod\": \"6577022e8af7ce488ac69b96\",\r\n  \"active\": true,\r\n  \"description\": \"\",\r\n  \"note\": \"\",\r\n  \"agreementText\": \"\",\r\n  \"sendSMS\": false,\r\n  \"sms\": \"\",\r\n  \"sendEmailEnabled\": false,\r\n  \"emailMessage\": {\r\n    \"subject\": \"\",\r\n    \"content\": \"\"\r\n  },\r\n  \"registrationStartDate\": \"2024-12-17T00:00:00.000Z\",\r\n  \"registrationEndDate\": \"2024-12-26T00:00:00.000Z\",\r\n  \"paid\": false,\r\n  \"price\": 0,\r\n  \"bankAccount\": null,\r\n  \"sendEmailToRegistrar\": false,\r\n  \"registrarEmails\": [],\r\n  \"showDescFirst\": false,\r\n  \"showNoteFirst\": false,\r\n  \"noteEnabled\": false,\r\n  \"descEnabled\": false,\r\n  \"agreementEnabled\": false,\r\n  \"formTemplateId\": null,\r\n  \"documents\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT Registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{lessonID}}\",\r\n  \"name\": \"dersler321\",\r\n  \"translateName\": [],\r\n  \"registrationStartDate\": \"2024-12-17\",\r\n  \"registrationEndDate\": \"2024-12-26\",\r\n  \"gradeLevel\": {\r\n    \"id\": \"65489909e70d9e34a8331e53\",\r\n    \"order\": 0,\r\n    \"active\": false,\r\n    \"showToAllSchools\": false,\r\n    \"minCredit\": 0\r\n  },\r\n  \"academicPeriod\": \"6577022e8af7ce488ac69b96\",\r\n  \"documents\": [],\r\n  \"hasDocuments\": false,\r\n  \"description\": \"\",\r\n  \"note\": \"\",\r\n  \"agreementText\": \"\",\r\n  \"type\": \"REGISTRATION\",\r\n  \"school\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"deleted\": false,\r\n  \"active\": true,\r\n  \"showDescFirst\": false,\r\n  \"showNoteFirst\": false,\r\n  \"noteEnabled\": false,\r\n  \"descEnabled\": false,\r\n  \"agreementEnabled\": false,\r\n  \"sendSMS\": false,\r\n  \"sms\": \"\",\r\n  \"sendEmailEnabled\": false,\r\n  \"emailMessage\": {\r\n    \"subject\": \"\",\r\n    \"content\": \"\",\r\n    \"contentRawData\": null,\r\n    \"to\": null,\r\n    \"cc\": null,\r\n    \"bcc\": null\r\n  },\r\n  \"sendEmailToRegistrar\": false,\r\n  \"registrarEmails\": [],\r\n  \"fields\": [\r\n    {\r\n      \"id\": \"411910b8-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Last Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Last Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Last Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Фамилия ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының тегі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Soyadı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nachname des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nom de famille de l'élève\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_LAST_NAME\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411910b9-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's First Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's First Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's First Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Имя ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының аты\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Adı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Vorname des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Prénom de l'élève\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_FIRST_NAME\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411910ba-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Middle Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Middle Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Middle Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Отчество ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының әкесінің аты\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin İkinci Adı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Zweiter Vorname des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Deuxième prénom de l'élève\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_MIDDLE_NAME\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937cb-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Date of Birth\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Date of Birth\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Date of Birth\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Дата рождения ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының туған күні\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Doğum Tarihi\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Geburtsdatum des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Date de naissance de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"DATE\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_DATE_OF_BIRTH\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937cc-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Personal ID\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Personal ID\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Personal ID\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"ИИН ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының ЖСН-і\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Kimlik ID\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Personalausweis des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"ID personnel de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_PERSONAL_ID\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937cd-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Gender\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Gender\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Gender\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Пол ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының жынысы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Cinsiyeti\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Geschlecht des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Sexe de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"LIST\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_GENDER\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937ce-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Citizenship\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Citizenship\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Citizenship\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Гражданство ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының азаматтығы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Vatandaşlığı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Staatsbürgerschaft des Studenten\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Citoyenneté des étudiants\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"LIST\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_CITIZENSHIP\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937cf-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Nationality\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Nationality\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Nationality\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Национальность ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының ұлты\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Uyruğu\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nationalität des Studenten\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nationalité de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"LIST\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_NATIONALITY\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d0-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Current School\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Current School\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Current School\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Текущая школа ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының қазіргі мектебі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Mevcut Okulu\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Aktuelle Schule des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"École actuelle de l'élève\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_CURRENT_SCHOOL\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d1-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Students Source Of Information\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Students Source Of Information\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Students Source Of Information\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Источник информации ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының ақпараттың дереккөзі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencilerin Bilgi Kaynağı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Informationsquelle für Studenten\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Étudiants Source d'information\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"LIST\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_SOURCE_TYPE\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d2-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Phone Number\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Phone Number\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Phone Number\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Телефон ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының телефон нөмірі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin Telefon No.\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Telefonnummer des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Numéro de téléphone de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_PHONE_NUMBER\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d3-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Email\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Email\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Email\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Эл. адрес ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушының электрондық поштасы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Öğrencinin E-postası\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"E-Mail des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Courriel de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_EMAIL\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d4-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Student's Address\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Address\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Student's Address\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Адрес ученика\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Оқушы мекен-жайы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Adresi\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Adresse des Schülers\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Adresse de l'étudiant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"ADDRESS\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"STUDENT_ADDRESS\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d5-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative Type\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative Type\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative Type\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Тип представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкіл түрі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Veli Türü\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Repräsentativer Typ\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Type représentatif\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"LIST\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_TYPE\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d6-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's Last Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Last Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Last Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Фамилия представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің тегі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Soyadı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nachname des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Nom de famille du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_LAST_NAME\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d7-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's First Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's First Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's First Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Имя представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің аты\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Adı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Vorname des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Prénom du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_FIRST_NAME\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d8-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's Middle Name\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Middle Name\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Middle Name\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Отчество представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің әкесінің аты\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin İkinci Adı\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Zweiter Vorname des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Deuxième prénom du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_MIDDLE_NAME\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937d9-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's Phone Number\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Phone Number\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Phone Number\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Телефон представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің телефон нөмірі\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Telefon No.\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Telefonnummer des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Numéro de téléphone du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_PHONE_NUMBER\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937da-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's Email\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Email\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Email\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Эл. адрес представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің электрондық поштасы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin E-postası\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"E-Mail des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Courriel du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"STRING\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_EMAIL\",\r\n      \"required\": true,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    },\r\n    {\r\n      \"id\": \"411937db-bd36-11ef-b2e8-0242ac19000a\",\r\n      \"name\": \"Representative's Address\",\r\n      \"translateName\": [\r\n        {\r\n          \"lang\": \"en\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Address\"\r\n        },\r\n        {\r\n          \"lang\": \"en-us\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Representative's Address\"\r\n        },\r\n        {\r\n          \"lang\": \"ru\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Адрес представителя\"\r\n        },\r\n        {\r\n          \"lang\": \"kk\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Өкілдің мекен-жайы\"\r\n        },\r\n        {\r\n          \"lang\": \"tr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Velisinin Adresi\"\r\n        },\r\n        {\r\n          \"lang\": \"de\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Adresse des Vertreters\"\r\n        },\r\n        {\r\n          \"lang\": \"fr\",\r\n          \"defaultLang\": false,\r\n          \"data\": \"Adresse du représentant\"\r\n        }\r\n      ],\r\n      \"group\": {},\r\n      \"customFieldType\": \"ADDRESS\",\r\n      \"type\": \"DEFAULT\",\r\n      \"defaultFieldType\": \"REPRESENTATIVE_ADDRESS\",\r\n      \"required\": false,\r\n      \"hide\": false,\r\n      \"listElements\": []\r\n    }\r\n  ],\r\n  \"paid\": false,\r\n  \"price\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT Registration Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"6762b6fa770b3424ac4b2c9d66756\",\r\n  \"name\": \"kimyacıklar\",\r\n  \"type\": \"REGISTRATION\",\r\n  \"translateName\": [],\r\n  \"school\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"gradeLevel\": {\r\n    \"id\": \"65489909e70d9e34a8331e5323\"\r\n  },\r\n  \"academicPeriod\": \"6577022e8af7ce488ac69b96\",\r\n  \"active\": true,\r\n  \"description\": \"\",\r\n  \"note\": \"\",\r\n  \"agreementText\": \"\",\r\n  \"sendSMS\": false,\r\n  \"sms\": \"\",\r\n  \"sendEmailEnabled\": false,\r\n  \"emailMessage\": {\r\n    \"subject\": \"\",\r\n    \"content\": \"\"\r\n  },\r\n  \"registrationStartDate\": \"2024-12-17T00:00:00.000Z\",\r\n  \"registrationEndDate\": \"2024-12-26T00:00:00.000Z\",\r\n  \"paid\": false,\r\n  \"price\": 0,\r\n  \"bankAccount\": null,\r\n  \"sendEmailToRegistrar\": false,\r\n  \"registrarEmails\": [],\r\n  \"showDescFirst\": false,\r\n  \"showNoteFirst\": false,\r\n  \"noteEnabled\": false,\r\n  \"descEnabled\": false,\r\n  \"agreementEnabled\": false,\r\n  \"formTemplateId\": null,\r\n  \"documents\": [],\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams/{{lessonID}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams",
+								"{{lessonID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Request Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{lessonID}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/exams/",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"exams",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US104",
+			"item": [
+				{
+					"name": "List custom fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": \"\",\r\n        \"schoolId\": \"6576fd8f8af7ce488ac69b89\",\r\n        \"name\": \"\",\r\n        \"code\": \"\",\r\n        \"type\": \"\",\r\n        \"constant\": false,\r\n        \"systemField\": false,\r\n        \"maxLength\": 0,\r\n        \"rows\": 0,\r\n        \"multiple\": false,\r\n        \"createdDate\": \"\",\r\n        \"changedDate\": \"\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field/search",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a custom field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var jsonData=pm.response.json(); \r",
+									"pm.collectionVariables.set(\"fieldId\",jsonData.id);\r",
+									"pm.collectionVariables.set(\"fieldName\",jsonData.name);\r",
+									"pm.collectionVariables.set(\"fieldCode\",jsonData.code);\r",
+									"pm.collectionVariables.set(\"fieldHint\",jsonData.hint);\r",
+									"pm.collectionVariables.set(\"fieldDefaultValue\",jsonData.defaultValue);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"schoolId\": \"{{schoolId}}\",\r\n    \"name\": \"{{$randomLoremWord}} {{$randomInt}}\",\r\n    \"translateName\": [],\r\n    \"code\": \"{{$randomLoremWord}}{{$randomInt}}\",\r\n    \"type\": \"AUTOCOMPLETE\",\r\n    \"constant\": true,\r\n    \"systemField\": false,\r\n    \"hint\": \"{{$randomLoremWord}}\",\r\n    \"maxLength\": 0,\r\n    \"rows\": 2,\r\n    \"multiple\": false,\r\n    \"offLabel\": \"\",\r\n    \"onLabel\": \"\",\r\n    \"defaultValue\": \"{{$randomLoremWord}}\",\r\n    \"createdDate\": \"\",\r\n    \"changedDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a custom field NEGATIVE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"schoolId\": \"{{schoolId}}\",\r\n    \"name\": \"{{fieldName}}\",\r\n    \"translateName\": [],\r\n    \"code\": \"{{fieldCode}}\",\r\n    \"type\": \"AUTOCOMPLETE\",\r\n    \"constant\": true,\r\n    \"systemField\": false,\r\n    \"hint\": \"testtest\",\r\n    \"maxLength\": 0,\r\n    \"rows\": 2,\r\n    \"multiple\": false,\r\n    \"offLabel\": \"\",\r\n    \"onLabel\": \"\",\r\n    \"defaultValue\": \"{{$randomLoremWord}}\",\r\n    \"createdDate\": \"\",\r\n    \"changedDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit the custom field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Updated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{fieldId}}\",\r\n    \"schoolId\": \"{{schoolId}}\",\r\n    \"name\": \"Updated {{$randomLoremWord}} {{$randomInt}}\",\r\n    \"code\": \"Updated{{$randomLoremWord}} {{$randomInt}}\",\r\n    \"type\": \"AUTOCOMPLETE\",\r\n    \"constant\": false,\r\n    \"systemField\": false,\r\n    \"hint\": \"{{fieldHint}}\",\r\n    \"maxLength\": 0,\r\n    \"rows\": 0,\r\n    \"multiple\": false,\r\n    \"defaultValue\": \"{{fieldDefaultValue}}\",\r\n    \"createdDate\": \"\",\r\n    \"changedDate\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the custom field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field/{{fieldId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field",
+								"{{fieldId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the custom field NEGATIVE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"EntityField not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/entity-field/{{fieldId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"entity-field",
+								"{{fieldId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US105",
+			"item": [
+				{
+					"name": "List student groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schoolId\": \"{{schoolId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group/search",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a student group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData=pm.response.json(); \r",
+									"pm.collectionVariables.set(\"sGroupId\",jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schoolId\": \"{{schoolId}}\",\r\n    \"name\": \"{{$randomLoremWord}}{{$randomInt}}\",\r\n    \"description\": \"{{$randomLoremSentence}}\",\r\n    \"count\": 0,\r\n    \"active\": \"{{$randomBoolean}}\",\r\n    \"publicGroup\": \"{{$randomBoolean}}\",\r\n    \"showToStudent\": \"{{$randomBoolean}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit the student group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Updated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"id\": \"{{sGroupId}}\",\r\n    \"schoolId\": \"{{schoolId}}\",\r\n    \"name\": \"Updated {{$randomLoremWord}}{{$randomInt}}\",\r\n    \"description\": \"Updated {{$randomLoremSentence}}\",\r\n    \"count\": 0,\r\n    \"active\": \"{{$randomBoolean}}\",\r\n    \"publicGroup\": \"{{$randomBoolean}}\",\r\n    \"showToStudent\": \"{{$randomBoolean}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the student group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group/{{sGroupId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group",
+								"{{sGroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the student group NEGATIVE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Group with given id does not exist!\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group/{{sGroupId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group",
+								"{{sGroupId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US106",
+			"item": [
+				{
+					"name": "Add Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"657711ca8af7ce488ac6a628\",\r\n    \"657711ca8af7ce488ac6a629\",\r\n    \"657711ca8af7ce488ac6a62d\",\r\n    \"657711ca8af7ce488ac6a62e\",\r\n    \"657711ca8af7ce488ac6a62f\",\r\n    \"657711ca8af7ce488ac6a631\",\r\n    \"657711ca8af7ce488ac6a62a\",\r\n    \"657711ca8af7ce488ac6a62b\",\r\n    \"657711ca8af7ce488ac6a62c\",\r\n    \"657711ca8af7ce488ac6a630\"\r\n  ]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group/{{sGroupId}}/add-students",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group",
+								"{{sGroupId}}",
+								"add-students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New added Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/students/group/6653771b4f67ac4b1de8b9b7?page=0&size=10",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"students",
+								"group",
+								"6653771b4f67ac4b1de8b9b7"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US107",
+			"item": [
+				{
+					"name": "List Students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.collectionVariables.set(\"studentID\", pm.response.json().content[0].id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": null,\r\n  \"description\": null,\r\n  \"publicGroup\": null,\r\n  \"showToStudent\": null,\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/students/group/6657e4bfdf68c443afcc793a?page=0&size=100",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"students",
+								"group",
+								"6657e4bfdf68c443afcc793a"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  \"{{studentID}}\"\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/student-group/6657e4bfdf68c443afcc793a/remove-students?page=0&size=10",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"student-group",
+								"6657e4bfdf68c443afcc793a",
+								"remove-students"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletedID Control",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Silinen id kontrol\", function () {\r",
+									"    pm.expect(pm.response.json().id).to.not.eql(\"{{studentID}}\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/students/group/6657e4bfdf68c443afcc793a?page=0&size=10",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"students",
+								"group",
+								"6657e4bfdf68c443afcc793a"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US108",
+			"item": [
+				{
+					"name": "Add an education standard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData=pm.response.json(); \r",
+									"pm.collectionVariables.set(\"educationId\",jsonData.id);\r",
+									"pm.collectionVariables.set(\"schoolId\",jsonData.schoolId);\r",
+									"pm.collectionVariables.set(\"gradeLevelId\",jsonData.gradeLevelId);\r",
+									"pm.collectionVariables.set(\"subjectId\",jsonData.subjectId);\r",
+									"pm.collectionVariables.set(\"gradeCategoriesTemplateId\",jsonData.gradeCategoriesTemplateId);\r",
+									"pm.collectionVariables.set(\"gradeCategoryId\",jsonData.gradeCategoryId);\r",
+									"pm.collectionVariables.set(\"packageId\",jsonData.packageId);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"name\": \"{{$randomLoremWord}}\",\r\n    \"description\": \"{{$randomLoremSentence}}\",\r\n    \"schoolId\": \"6576fd8f8af7ce488ac69b89\",\r\n    \"gradeLevelId\": \"654898fae70d9e34a8331e51\",\r\n    \"subjectId\": \"657704ff8af7ce488ac69b9e\",\r\n    \"gradeCategoriesTemplateId\": \"657707e18af7ce488ac69ba9\",\r\n    \"gradeCategoryId\": \"59ef-d8ab\",\r\n    \"packageId\": \"6761dcbca7945338bd1ff0a7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/education-standard",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"education-standard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Education Standards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/education-standard/school/{{schoolId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"education-standard",
+								"school",
+								"{{schoolId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit the education standard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Updated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{educationId}}\",\r\n    \"name\": \"Updated name: {{$randomLoremWord}}\",\r\n    \"description\": \"Updated description: {{$randomLoremSentence}}\",\r\n    \"schoolId\":\"{{schoolId}}\",\r\n    \"gradeLevelId\": \"{{gradeLevelId}}\",\r\n     \"subjectId\": \"{{subjectId}}\",\r\n    \"gradeCategoriesTemplateId\": \"{{gradeCategoriesTemplateId}}\",\r\n    \"gradeCategoryId\": \"{{gradeCategoryId}}\",\r\n    \"packageId\": \"{{packageId}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/education-standard",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"education-standard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the education standard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/education-standard/{{educationId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"education-standard",
+								"{{educationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the education standard NEGATIVE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Education Standard not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/education-standard/{{educationId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"education-standard",
+								"{{educationId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US109",
+			"item": [
+				{
+					"name": "List grading schemes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/grading-schemes/school/{{schoolId}}/search",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"grading-schemes",
+								"school",
+								"{{schoolId}}",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a grading scheme",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData=pm.response.json(); \r",
+									"pm.collectionVariables.set(\"gradingId\",jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"{{$randomLoremWord}} {{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}\",\r\n        \"active\": true,\r\n        \"schoolId\": \"{{schoolId}}\",\r\n        \"gradeRanges\": [],\r\n        \"type\": \"POINT\",\r\n        \"enablePoint\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/grading-schemes",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"grading-schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit the grading scheme",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Updated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\":\"{{gradingId}}\",\r\n        \"name\": \"Updated name: {{$randomLoremWord}}\",\r\n        \"schoolId\": \"{{schoolId}}\",\r\n        \"type\": \"POINT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/grading-schemes",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"grading-schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the grading scheme",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-school",
+								"value": "6576fd8f8af7ce488ac69b89",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/grading-schemes/{{gradingId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"grading-schemes",
+								"{{gradingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the grading scheme NEGATIVE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"grading scheme not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/grading-schemes/{{gradingId}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"grading-schemes",
+								"{{gradingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US110",
+			"item": [
+				{
+					"name": "List Incident Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type/search",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Incident Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"incidentID\", pm.response.json().id);\r",
+									"pm.collectionVariables.set(\"name\", pm.response.json().name);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": null,\r\n  \"name\": \"{{$randomFullName}}\",\r\n  \"active\": true,\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"minPoint\": 50,\r\n  \"maxPoint\": 70,\r\n  \"academicBased\": false,\r\n  \"permissions\": [\r\n    \"ROLE_MANAGER\"\r\n  ],\r\n  \"notifyWithEmail\": false,\r\n  \"notifyWithMessage\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Incident Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type/search",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Incident Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{incidentID}}\",\r\n  \"name\": \"newJonny\",\r\n  \"active\": true,\r\n  \"schoolId\": \"6576fd8f8af7ce488ac69b89\",\r\n  \"minPoint\": 10,\r\n  \"maxPoint\": 89,\r\n  \"academicBased\": false,\r\n  \"permissions\": [],\r\n  \"notifyWithEmail\": false,\r\n  \"notifyWithMessage\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Incident Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type/{{incidentID}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type",
+								"{{incidentID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Incident Type Nagative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://test.mersys.io/school-service/api/incident-type/{{incidentID}}",
+							"protocol": "https",
+							"host": [
+								"test",
+								"mersys",
+								"io"
+							],
+							"path": [
+								"school-service",
+								"api",
+								"incident-type",
+								"{{incidentID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "inherit"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "schoolId",
+			"value": ""
+		},
+		{
+			"key": "educationId",
+			"value": ""
+		},
+		{
+			"key": "gradeLevelId",
+			"value": ""
+		},
+		{
+			"key": "subjectId",
+			"value": ""
+		},
+		{
+			"key": "gradeCategoriesTemplateId",
+			"value": ""
+		},
+		{
+			"key": "gradeCategoryId",
+			"value": ""
+		},
+		{
+			"key": "packageId",
+			"value": ""
+		},
+		{
+			"key": "gradingId",
+			"value": ""
+		},
+		{
+			"key": "sGroupId",
+			"value": ""
+		},
+		{
+			"key": "groupId",
+			"value": ""
+		},
+		{
+			"key": "stateId",
+			"value": ""
+		},
+		{
+			"key": "random_state_name",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "lessonID",
+			"value": ""
+		},
+		{
+			"key": "fieldName",
+			"value": ""
+		},
+		{
+			"key": "fieldCode",
+			"value": ""
+		},
+		{
+			"key": "fieldId",
+			"value": ""
+		},
+		{
+			"key": "fieldHint",
+			"value": ""
+		},
+		{
+			"key": "fieldDefaultValue",
+			"value": ""
+		},
+		{
+			"key": "studentID",
+			"value": ""
+		},
+		{
+			"key": "incidentID",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		}
+	]
+}

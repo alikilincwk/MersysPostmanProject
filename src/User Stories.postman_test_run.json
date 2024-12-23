@@ -1,0 +1,1685 @@
+{
+	"id": "a84f5159-1ba8-42e8-8bad-183165d95214",
+	"name": "User Stories",
+	"timestamp": "2024-12-23T07:26:25.992Z",
+	"collection_id": "39551771-5bd7663a-dd90-4c85-b7ac-908f87932591",
+	"folder_id": 0,
+	"environment_id": "39551771-0a4e803a-cf35-4f4a-a8dc-4932d304b1a3",
+	"totalPass": 62,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-12-23T07:26:09.926Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "85fce2f8-b3a2-48b4-b78e-c0edcaaf5bad",
+			"name": "Login",
+			"url": "https://test.mersys.io/auth/login",
+			"time": 802,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				802
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7119ce36-f0c3-4d3e-b0e1-b098df157e62",
+			"name": "Login Negative",
+			"url": "https://test.mersys.io/auth/login",
+			"time": 236,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "4557826e-599a-4a1e-9e43-f2f9321693be",
+			"name": "List countries",
+			"url": "https://test.mersys.io/school-service/api/countries",
+			"time": 561,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				561
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2fe0f892-1711-46e1-9c31-e399d9db7efd",
+			"name": "Create a country",
+			"url": "https://test.mersys.io/school-service/api/countries",
+			"time": 164,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				164
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "dbf2b0fe-e6de-4cb2-9d82-e5805d856874",
+			"name": "State List",
+			"url": "https://test.mersys.io/school-service/api/states",
+			"time": 430,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response contains states list with name and optional code": true
+			},
+			"testPassFailCounts": {
+				"Response contains states list with name and optional code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				430
+			],
+			"allTests": [
+				{
+					"Response contains states list with name and optional code": true
+				}
+			]
+		},
+		{
+			"id": "4984703f-9226-4f85-a5d1-c6cbc5705655",
+			"name": "Create State",
+			"url": "https://test.mersys.io/school-service/api/states",
+			"time": 134,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response contains created state details": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains created state details": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response contains created state details": true
+				}
+			]
+		},
+		{
+			"id": "1c18bf1e-c694-432e-a68e-83f92e3406a1",
+			"name": "Update State",
+			"url": "https://test.mersys.io/school-service/api/states",
+			"time": 120,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"State is successfully updated with random values": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"State is successfully updated with random values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				120
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"State is successfully updated with random values": true
+				}
+			]
+		},
+		{
+			"id": "c41531cd-315f-41f9-aac2-f2a42349fb03",
+			"name": "Remove State",
+			"url": "https://test.mersys.io/school-service/api/states/67691094fe1cc1431c7061d0",
+			"time": 144,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 or 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 or 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				144
+			],
+			"allTests": [
+				{
+					"Status code is 200 or 204": true
+				}
+			]
+		},
+		{
+			"id": "df8bf610-f4e5-4a26-8b03-c4c40cc434b5",
+			"name": "Country List",
+			"url": "https://test.mersys.io/school-service/api/countries",
+			"time": 275,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				275
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "444efc01-b935-4c5a-bbea-f68495df4c9c",
+			"name": "Get Cities",
+			"url": "https://test.mersys.io/school-service/api/cities",
+			"time": 444,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response contains city list with correct fields": true
+			},
+			"testPassFailCounts": {
+				"Response contains city list with correct fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				444
+			],
+			"allTests": [
+				{
+					"Response contains city list with correct fields": true
+				}
+			]
+		},
+		{
+			"id": "02528860-887c-4f33-a973-756d5c1efd02",
+			"name": "Create a City",
+			"url": "https://test.mersys.io/school-service/api/cities",
+			"time": 134,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "d8902d36-c69a-4558-a822-4275a7872db5",
+			"name": "Update City",
+			"url": "https://test.mersys.io/school-service/api/cities",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"City updated successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"City updated successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				121
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"City updated successfully": true
+				}
+			]
+		},
+		{
+			"id": "562c17de-95c0-4295-97a2-3637a5ce2a62",
+			"name": "Remove City",
+			"url": "https://test.mersys.io/school-service/api/cities/67691096fe1cc1431c7061d1",
+			"time": 119,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				119
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4c656e19-05dd-4296-8355-618722aca852",
+			"name": "Login",
+			"url": "https://test.mersys.io/auth/login",
+			"time": 374,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				374
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "cd67f879-7591-44b0-abd0-510b992437ec",
+			"name": "ADD Registration",
+			"url": "https://test.mersys.io/school-service/api/exams",
+			"time": 141,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				141
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "dbbc0979-cc08-4021-845c-9353a79cdecc",
+			"name": "ADD Registration Negative",
+			"url": "https://test.mersys.io/school-service/api/exams",
+			"time": 134,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2f46b1c1-e84d-4376-816d-4238ef974072",
+			"name": "EDIT Registration",
+			"url": "https://test.mersys.io/school-service/api/exams",
+			"time": 258,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				258
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "398b0be8-8366-4d59-bd51-2706e51ae5cb",
+			"name": "EDIT Registration Negative",
+			"url": "https://test.mersys.io/school-service/api/exams",
+			"time": 168,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				168
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "33c40125-f5c5-454e-82f4-80dd08496551",
+			"name": "DELETE Request",
+			"url": "https://test.mersys.io/school-service/api/exams/67691097fe1cc1431c7061d2",
+			"time": 135,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				135
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "69332950-0985-4164-aab9-36c417388cd0",
+			"name": "DELETE Request Negative",
+			"url": "https://test.mersys.io/school-service/api/exams/",
+			"time": 123,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status code is 405": true
+			},
+			"testPassFailCounts": {
+				"Status code is 405": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				123
+			],
+			"allTests": [
+				{
+					"Status code is 405": true
+				}
+			]
+		},
+		{
+			"id": "f205b5ce-adb6-4c1b-bbaa-048f024e7565",
+			"name": "List custom fields",
+			"url": "https://test.mersys.io/school-service/api/entity-field/search",
+			"time": 169,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				169
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b7e1db8a-f94d-4af8-a22b-b6ce6beedf35",
+			"name": "Create a custom field",
+			"url": "https://test.mersys.io/school-service/api/entity-field",
+			"time": 183,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				183
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "0e43d41c-dddf-4e2f-a0cd-0b6febef7e16",
+			"name": "Create a custom field NEGATIVE",
+			"url": "https://test.mersys.io/school-service/api/entity-field",
+			"time": 115,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				115
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "e5d00d88-cd5c-48d8-a7fa-d0b834ba54e0",
+			"name": "Edit the custom field",
+			"url": "https://test.mersys.io/school-service/api/entity-field",
+			"time": 128,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				128
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "3a6c23d2-5825-42b4-9b48-3a1dd5c8f56a",
+			"name": "Delete the custom field",
+			"url": "https://test.mersys.io/school-service/api/entity-field/67691099fe1cc1431c7061d4",
+			"time": 136,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				136
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "ffa9dce9-5ddf-4d6d-8e1f-4e6cf985d422",
+			"name": "Delete the custom field NEGATIVE",
+			"url": "https://test.mersys.io/school-service/api/entity-field/67691099fe1cc1431c7061d4",
+			"time": 117,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				117
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "83a7b138-6c2e-4daf-8582-9fbd48428342",
+			"name": "List student groups",
+			"url": "https://test.mersys.io/school-service/api/student-group/search",
+			"time": 221,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				221
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "32e5dc54-5987-4679-a4ca-9b2a21a6fc8d",
+			"name": "Add a student group",
+			"url": "https://test.mersys.io/school-service/api/student-group",
+			"time": 149,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "0754694b-2a40-486a-a73c-5b43f62bd7fa",
+			"name": "Edit the student group",
+			"url": "https://test.mersys.io/school-service/api/student-group",
+			"time": 120,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				120
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "317b9edd-6156-4eeb-88b7-ef3a78842e3a",
+			"name": "Add Student",
+			"url": "https://test.mersys.io/school-service/api/student-group/6769109afe1cc1431c7061d5/add-students",
+			"time": 305,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				305
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bd68b0a7-79ad-44bc-95b6-2e085eb75f23",
+			"name": "New added Students",
+			"url": "https://test.mersys.io/school-service/api/students/group/6653771b4f67ac4b1de8b9b7?page=0&size=10",
+			"time": 130,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				130
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d1b503cf-9b3b-4127-85d3-84676116be5c",
+			"name": "Delete the student group",
+			"url": "https://test.mersys.io/school-service/api/student-group/6769109afe1cc1431c7061d5",
+			"time": 116,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				116
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "90f47b3f-8614-4675-8047-09f34baaee95",
+			"name": "Delete the student group NEGATIVE",
+			"url": "https://test.mersys.io/school-service/api/student-group/6769109afe1cc1431c7061d5",
+			"time": 109,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				109
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "06b139b9-6b2e-4a3d-a2e8-a2db3f1decda",
+			"name": "List Students",
+			"url": "https://test.mersys.io/school-service/api/students/group/6657e4bfdf68c443afcc793a?page=0&size=100",
+			"time": 122,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				122
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "43d02883-d90a-48ed-80bf-06956938c838",
+			"name": "Delete Student",
+			"url": "https://test.mersys.io/school-service/api/student-group/6657e4bfdf68c443afcc793a/remove-students?page=0&size=10",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				121
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9ee424df-668c-46c9-be92-cdfa5865509d",
+			"name": "DeletedID Control",
+			"url": "https://test.mersys.io/school-service/api/students/group/6657e4bfdf68c443afcc793a?page=0&size=10",
+			"time": 118,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Silinen id kontrol": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Silinen id kontrol": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				118
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Silinen id kontrol": true
+				}
+			]
+		},
+		{
+			"id": "69392ded-5b6e-42ab-8761-ca7573c1dede",
+			"name": "Add an education standard",
+			"url": "https://test.mersys.io/school-service/api/education-standard",
+			"time": 158,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				158
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "4ad28a2b-eb82-407d-86ee-259341159ad3",
+			"name": "List Education Standards",
+			"url": "https://test.mersys.io/school-service/api/education-standard/school/6576fd8f8af7ce488ac69b89",
+			"time": 145,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				145
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "97747c5f-bb20-47a6-a14a-da58248a5529",
+			"name": "Edit the education standard",
+			"url": "https://test.mersys.io/school-service/api/education-standard",
+			"time": 132,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "80a958d1-0ac5-4edf-a92f-84cf5fc3a8c6",
+			"name": "Delete the education standard",
+			"url": "https://test.mersys.io/school-service/api/education-standard/6769109cfe1cc1431c7061d6",
+			"time": 137,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				137
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "e2ce035b-d9e7-49df-bee3-4c8355ba0022",
+			"name": "Delete the education standard NEGATIVE",
+			"url": "https://test.mersys.io/school-service/api/education-standard/6769109cfe1cc1431c7061d6",
+			"time": 131,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				131
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "e1506a20-68a4-4dee-8f78-e703fd0ac1ff",
+			"name": "List grading schemes",
+			"url": "https://test.mersys.io/school-service/api/grading-schemes/school/6576fd8f8af7ce488ac69b89/search",
+			"time": 257,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				257
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "98b6d70f-6114-4d55-9ab4-64c91c0c09ad",
+			"name": "Add a grading scheme",
+			"url": "https://test.mersys.io/school-service/api/grading-schemes",
+			"time": 174,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				174
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "0f261388-d3d9-4e56-acc6-c1b496d47675",
+			"name": "Edit the grading scheme",
+			"url": "https://test.mersys.io/school-service/api/grading-schemes",
+			"time": 123,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				123
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "a5fe0ce7-1d4c-49d7-ba0d-775421e34bbc",
+			"name": "Delete the grading scheme",
+			"url": "https://test.mersys.io/school-service/api/grading-schemes/6769109efe1cc1431c7061d7",
+			"time": 144,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				144
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5736562a-280d-4085-9c9d-10da9c219801",
+			"name": "Delete the grading scheme NEGATIVE",
+			"url": "https://test.mersys.io/school-service/api/grading-schemes/6769109efe1cc1431c7061d7",
+			"time": 124,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "8a396dce-c6f0-4769-b82a-f90b9b1a8fe8",
+			"name": "List Incident Type",
+			"url": "https://test.mersys.io/school-service/api/incident-type/search",
+			"time": 167,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				167
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "e90d57d2-95f6-4ee1-8c03-c53edb74602f",
+			"name": "Add Incident Type",
+			"url": "https://test.mersys.io/school-service/api/incident-type",
+			"time": 136,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				136
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "38501b4f-40e2-4b83-8857-90565c957037",
+			"name": "Search Incident Type",
+			"url": "https://test.mersys.io/school-service/api/incident-type/search",
+			"time": 130,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				130
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a88e9b78-51f3-4e6f-9bb1-e07801ff403a",
+			"name": "Edit Incident Type",
+			"url": "https://test.mersys.io/school-service/api/incident-type",
+			"time": 134,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "71651360-ac7c-437c-81ec-54e8ce99599d",
+			"name": "Delete Incident Type",
+			"url": "https://test.mersys.io/school-service/api/incident-type/6769109ffe1cc1431c7061d8",
+			"time": 113,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				113
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5c9960a7-f703-4b58-9dca-bc445fc17e3c",
+			"name": "Delete Incident Type Nagative",
+			"url": "https://test.mersys.io/school-service/api/incident-type/6769109ffe1cc1431c7061d8",
+			"time": 111,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				111
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 9692,
+	"collection": {
+		"requests": [
+			{
+				"id": "85fce2f8-b3a2-48b4-b78e-c0edcaaf5bad",
+				"method": "POST"
+			},
+			{
+				"id": "7119ce36-f0c3-4d3e-b0e1-b098df157e62",
+				"method": "POST"
+			},
+			{
+				"id": "4557826e-599a-4a1e-9e43-f2f9321693be",
+				"method": "GET"
+			},
+			{
+				"id": "2fe0f892-1711-46e1-9c31-e399d9db7efd",
+				"method": "POST"
+			},
+			{
+				"id": "dbf2b0fe-e6de-4cb2-9d82-e5805d856874",
+				"method": "GET"
+			},
+			{
+				"id": "4984703f-9226-4f85-a5d1-c6cbc5705655",
+				"method": "POST"
+			},
+			{
+				"id": "1c18bf1e-c694-432e-a68e-83f92e3406a1",
+				"method": "PUT"
+			},
+			{
+				"id": "c41531cd-315f-41f9-aac2-f2a42349fb03",
+				"method": "DELETE"
+			},
+			{
+				"id": "df8bf610-f4e5-4a26-8b03-c4c40cc434b5",
+				"method": "GET"
+			},
+			{
+				"id": "444efc01-b935-4c5a-bbea-f68495df4c9c",
+				"method": "GET"
+			},
+			{
+				"id": "02528860-887c-4f33-a973-756d5c1efd02",
+				"method": "POST"
+			},
+			{
+				"id": "d8902d36-c69a-4558-a822-4275a7872db5",
+				"method": "PUT"
+			},
+			{
+				"id": "562c17de-95c0-4295-97a2-3637a5ce2a62",
+				"method": "DELETE"
+			},
+			{
+				"id": "4c656e19-05dd-4296-8355-618722aca852",
+				"method": "POST"
+			},
+			{
+				"id": "cd67f879-7591-44b0-abd0-510b992437ec",
+				"method": "POST"
+			},
+			{
+				"id": "dbbc0979-cc08-4021-845c-9353a79cdecc",
+				"method": "POST"
+			},
+			{
+				"id": "2f46b1c1-e84d-4376-816d-4238ef974072",
+				"method": "PUT"
+			},
+			{
+				"id": "398b0be8-8366-4d59-bd51-2706e51ae5cb",
+				"method": "PUT"
+			},
+			{
+				"id": "33c40125-f5c5-454e-82f4-80dd08496551",
+				"method": "DELETE"
+			},
+			{
+				"id": "69332950-0985-4164-aab9-36c417388cd0",
+				"method": "DELETE"
+			},
+			{
+				"id": "f205b5ce-adb6-4c1b-bbaa-048f024e7565",
+				"method": "POST"
+			},
+			{
+				"id": "b7e1db8a-f94d-4af8-a22b-b6ce6beedf35",
+				"method": "POST"
+			},
+			{
+				"id": "0e43d41c-dddf-4e2f-a0cd-0b6febef7e16",
+				"method": "POST"
+			},
+			{
+				"id": "e5d00d88-cd5c-48d8-a7fa-d0b834ba54e0",
+				"method": "PUT"
+			},
+			{
+				"id": "3a6c23d2-5825-42b4-9b48-3a1dd5c8f56a",
+				"method": "DELETE"
+			},
+			{
+				"id": "ffa9dce9-5ddf-4d6d-8e1f-4e6cf985d422",
+				"method": "DELETE"
+			},
+			{
+				"id": "83a7b138-6c2e-4daf-8582-9fbd48428342",
+				"method": "POST"
+			},
+			{
+				"id": "32e5dc54-5987-4679-a4ca-9b2a21a6fc8d",
+				"method": "POST"
+			},
+			{
+				"id": "0754694b-2a40-486a-a73c-5b43f62bd7fa",
+				"method": "PUT"
+			},
+			{
+				"id": "317b9edd-6156-4eeb-88b7-ef3a78842e3a",
+				"method": "POST"
+			},
+			{
+				"id": "bd68b0a7-79ad-44bc-95b6-2e085eb75f23",
+				"method": "GET"
+			},
+			{
+				"id": "d1b503cf-9b3b-4127-85d3-84676116be5c",
+				"method": "DELETE"
+			},
+			{
+				"id": "90f47b3f-8614-4675-8047-09f34baaee95",
+				"method": "DELETE"
+			},
+			{
+				"id": "06b139b9-6b2e-4a3d-a2e8-a2db3f1decda",
+				"method": "GET"
+			},
+			{
+				"id": "43d02883-d90a-48ed-80bf-06956938c838",
+				"method": "POST"
+			},
+			{
+				"id": "9ee424df-668c-46c9-be92-cdfa5865509d",
+				"method": "GET"
+			},
+			{
+				"id": "69392ded-5b6e-42ab-8761-ca7573c1dede",
+				"method": "POST"
+			},
+			{
+				"id": "4ad28a2b-eb82-407d-86ee-259341159ad3",
+				"method": "GET"
+			},
+			{
+				"id": "97747c5f-bb20-47a6-a14a-da58248a5529",
+				"method": "PUT"
+			},
+			{
+				"id": "80a958d1-0ac5-4edf-a92f-84cf5fc3a8c6",
+				"method": "DELETE"
+			},
+			{
+				"id": "e2ce035b-d9e7-49df-bee3-4c8355ba0022",
+				"method": "DELETE"
+			},
+			{
+				"id": "e1506a20-68a4-4dee-8f78-e703fd0ac1ff",
+				"method": "GET"
+			},
+			{
+				"id": "98b6d70f-6114-4d55-9ab4-64c91c0c09ad",
+				"method": "POST"
+			},
+			{
+				"id": "0f261388-d3d9-4e56-acc6-c1b496d47675",
+				"method": "PUT"
+			},
+			{
+				"id": "a5fe0ce7-1d4c-49d7-ba0d-775421e34bbc",
+				"method": "DELETE"
+			},
+			{
+				"id": "5736562a-280d-4085-9c9d-10da9c219801",
+				"method": "DELETE"
+			},
+			{
+				"id": "8a396dce-c6f0-4769-b82a-f90b9b1a8fe8",
+				"method": "POST"
+			},
+			{
+				"id": "e90d57d2-95f6-4ee1-8c03-c53edb74602f",
+				"method": "POST"
+			},
+			{
+				"id": "38501b4f-40e2-4b83-8857-90565c957037",
+				"method": "POST"
+			},
+			{
+				"id": "a88e9b78-51f3-4e6f-9bb1-e07801ff403a",
+				"method": "PUT"
+			},
+			{
+				"id": "71651360-ac7c-437c-81ec-54e8ce99599d",
+				"method": "DELETE"
+			},
+			{
+				"id": "5c9960a7-f703-4b58-9dca-bc445fc17e3c",
+				"method": "DELETE"
+			}
+		]
+	}
+}
